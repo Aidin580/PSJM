@@ -38,8 +38,8 @@
 .loader {
   --size: 500px;
   --duration: 2s;
-  --logo-color: #69b0b2;
-  --background: #69b0b2;
+  --logo-color: var(--importantcolor);
+  --background: var(--importantcolor);
   height: var(--size);
   aspect-ratio: 1;
   position: relative;

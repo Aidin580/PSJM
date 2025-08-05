@@ -4,8 +4,18 @@ import Dropdown from "../DropDown/DropDown";
 import delete1 from "../../assets/icons/delete.svg"
 import edit from "../../assets/icons/edit.svg"
 import search from "../../assets/icons/search.svg"
+import searchIcon from "../../assets/icons/search.svg";
 
 export default function Members() {
+
+  
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const stu_school1 = "هنرستان حاج سید محمد نظام فصیحی"
+    const stu_school2 = "دبیرستان غیر انطفاعی دین و دانش"
+    const stu_school3 = "دبستان شهید یاسر اکبری لنگرود"
+    const stu_school4 = "دبستان شهید منصور ستاری"
+    const stu_school5 = "دبیرستان شهید جعفر بازیار"
 
     const options = [
      { value: "apple", label: "تمامی کلاس ها" },
@@ -30,300 +40,348 @@ export default function Members() {
     console.log("انتخاب شد:", option);
   };
 
-  
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   return (
     <div className={style.container}>
         <div className={style.header}>
             <div className={style.right}>
-            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M11.1704 0.958984C9.42025 0.958984 7.99732 2.33879 7.99732 4.03591C7.99732 5.73302 9.42025 7.11283 11.1704 7.11283C12.9205 7.11283 14.3435 5.73302 14.3435 4.03591C14.3435 2.33879 12.9205 0.958984 11.1704 0.958984ZM3.674 7.68975C3.30712 7.73783 2.98981 7.99745 2.80141 8.45898L0.500927 15.7282C0.248072 16.4686 0.619918 17.2186 1.25453 17.3436L2.80141 17.6898C3.43602 17.8148 4.06072 17.4686 4.18963 16.7282L5.97448 9.3436C6.10339 8.72821 5.69684 8.08398 5.06223 7.95898L4.07064 7.72821C3.94173 7.69937 3.79795 7.67533 3.674 7.68975ZM8.2353 8.3436C7.60069 8.3436 7.36271 9.07437 7.36271 9.07437C6.857 11.1657 5.58777 16.7186 5.45886 17.459C5.206 18.6898 5.82575 19.6753 6.33146 20.5359C6.83717 21.2763 12.9404 30.6224 13.8278 31.7282C14.5914 32.7138 15.345 33.1898 16.4853 32.5744C17.3728 32.084 17.2687 30.858 16.7629 29.9974C16.2572 29.1369 10.0202 19.3051 10.0202 19.3051L11.2894 14.9974C11.2894 14.9974 12.0579 15.959 12.4396 16.5744C12.5685 16.8196 12.8065 16.9446 13.3122 17.1898C13.9468 17.4349 15.3648 18.3196 16.1283 18.6898C16.8919 19.0599 17.7694 19.1609 18.1512 18.4205C18.5329 17.8051 18.0322 17.0888 17.3976 16.8436C16.7629 16.5984 14.1055 14.9974 14.1055 14.9974C14.1055 14.9974 12.6875 12.0263 11.924 10.3051C11.1605 8.82918 10.6796 8.3436 9.66319 8.3436H8.2353ZM27.0358 9.57437C25.6327 9.57437 24.4973 10.6753 24.4973 12.0359C24.4973 13.3965 25.6327 14.4974 27.0358 14.4974C28.4389 14.4974 29.5742 13.3965 29.5742 12.0359C29.5742 10.6753 28.4389 9.57437 27.0358 9.57437ZM22.0778 14.6128C21.6961 14.6128 21.3342 14.858 21.2053 15.2282L19.5394 20.5359C19.2865 21.0263 19.5493 21.5263 20.055 21.6513L21.3242 21.8821C21.706 22.0071 22.2266 21.6369 22.3555 21.2667L23.6247 15.8436C23.7536 15.3532 23.3719 15.0071 22.9901 14.8821L22.0778 14.6128ZM24.894 15.7282C24.3882 15.7282 24.2593 16.2282 24.2593 16.2282C23.8776 17.7042 23.119 21.0359 22.9901 21.6513C22.8612 22.6369 23.243 23.2282 23.6247 23.8436C24.0065 24.334 28.424 31.2186 29.0586 31.959C29.6932 32.6994 30.1989 33.0648 30.9625 32.5744C31.5971 32.2042 31.6219 31.3436 31.2401 30.7282C30.8583 30.1128 26.2822 22.9974 26.2822 22.9974L27.0358 20.5359L27.7894 21.6513C27.9183 21.8965 28.0422 21.8676 28.424 22.1128C28.8058 22.358 30.4468 23.0984 31.0815 23.3436C31.5872 23.5888 32.3755 23.7186 32.6283 23.2282C33.0101 22.7378 32.7374 22.2426 32.2317 21.9974L29.1776 20.5359C29.1776 20.5359 28.186 18.2955 27.5514 17.1898C27.0457 16.084 26.6491 15.7282 25.8855 15.7282H24.894ZM5.33987 22.1128L4.30862 25.5744C4.30862 25.5744 1.66108 29.2811 0.897562 30.2667C0.391853 31.0071 -0.118814 31.9878 0.897562 32.7282C1.91394 33.4686 2.81132 32.459 3.31703 31.8436C3.82274 31.3532 5.85549 28.5455 6.49011 27.8051C6.87187 27.3148 7.11481 26.9446 7.24372 26.5744C7.37262 26.3292 7.50649 26.0744 7.75934 25.459L5.33987 22.1128ZM23.1091 24.8436L22.3555 27.4205C22.3555 27.4205 20.4417 30.1417 19.936 30.8821C19.5543 31.4974 19.1725 32.084 19.936 32.5744C20.6995 33.1898 21.3391 32.4494 21.7209 31.959C22.1026 31.5888 23.5999 29.5263 23.9817 29.0359C24.2346 28.6657 24.3684 28.3965 24.4973 28.1513C24.6262 27.9061 24.765 27.6801 24.894 27.1898L23.1091 24.8436Z" fill="white"/>
+            <svg width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.26494 0.964844C3.38088 0.964844 2.53303 1.31603 1.90791 1.94115C1.28279 2.56628 0.931603 3.41412 0.931603 4.29818C0.931603 5.18223 1.28279 6.03008 1.90791 6.6552C2.53303 7.28032 3.38088 7.63151 4.26494 7.63151C5.14899 7.63151 5.99684 7.28032 6.62196 6.6552C7.24708 6.03008 7.59827 5.18223 7.59827 4.29818C7.59827 3.41412 7.24708 2.56628 6.62196 1.94115C5.99684 1.31603 5.14899 0.964844 4.26494 0.964844ZM7.98401 0.964844C7.98734 0.968177 7.98639 0.976159 7.98889 0.979492C8.77889 1.86449 9.26494 3.02568 9.26494 4.29818C9.26494 5.80984 8.58363 7.16811 7.51363 8.08561L11.1904 9.13704L14.431 7.83984C15.1543 7.55151 15.9482 7.56005 16.664 7.86589C17.3799 8.17255 17.9325 8.74086 18.2216 9.46419C18.5108 10.1875 18.5023 10.9806 18.1956 11.6973C17.8889 12.4139 17.3206 12.9665 16.5973 13.2565L12.4306 14.9232C11.8348 15.1607 11.1716 15.1958 10.5507 15.0208L9.26494 14.653V14.7148V21.7982H31.3483C32.0383 21.7982 32.5983 21.239 32.5983 20.5482C32.5983 19.8573 32.0383 19.2982 31.3483 19.2982H30.9316V2.21484C30.9316 1.52401 30.3716 0.964844 29.6816 0.964844H7.98401ZM5.49052 9.28516C5.40087 9.28424 5.31138 9.29297 5.2236 9.3112C5.18124 9.30906 5.14116 9.29818 5.09827 9.29818H2.59827C1.21744 9.29818 0.0982695 10.4173 0.0982695 11.7982V21.7982V29.7148C0.095927 29.8805 0.126528 30.0449 0.188296 30.1986C0.250063 30.3524 0.341764 30.4923 0.458069 30.6102C0.574375 30.7282 0.712966 30.8219 0.865787 30.8858C1.01861 30.9497 1.18261 30.9826 1.34827 30.9826C1.51393 30.9826 1.67793 30.9497 1.83075 30.8858C1.98357 30.8219 2.12216 30.7282 2.23847 30.6102C2.35478 30.4923 2.44648 30.3524 2.50824 30.1986C2.57001 30.0449 2.60061 29.8805 2.59827 29.7148V21.7982H5.09827V29.7148C5.09593 29.8805 5.12653 30.0449 5.1883 30.1986C5.25006 30.3524 5.34176 30.4923 5.45807 30.6102C5.57438 30.7282 5.71297 30.8219 5.86579 30.8858C6.01861 30.9497 6.18261 30.9826 6.34827 30.9826C6.51393 30.9826 6.67793 30.9497 6.83075 30.8858C6.98357 30.8219 7.12216 30.7282 7.23847 30.6102C7.35477 30.4923 7.44648 30.3524 7.50824 30.1986C7.57001 30.0449 7.60061 29.8805 7.59827 29.7148V18.8815V12.4427L11.0048 13.416C11.271 13.4922 11.555 13.4779 11.8121 13.3753L15.9788 11.7087C16.254 11.6031 16.483 11.4038 16.6255 11.1458C16.768 10.8878 16.8148 10.5877 16.7575 10.2986C16.7003 10.0095 16.5427 9.74991 16.3127 9.56567C16.0827 9.38142 15.7949 9.28438 15.5003 9.29167C15.3459 9.29565 15.1936 9.32821 15.0511 9.3877L11.2815 10.8949L5.85836 9.34701C5.73953 9.30811 5.61554 9.28726 5.49052 9.28516Z" fill="#fff"/>
             </svg>
-            <h1>کادر آموزشگاه</h1>
-            <p>۶۷۸ نفر غایب هستند.</p>
+            <h1>لیست کل کادر آموزشگاه ها</h1>
+            <p>۱۲۷ نفر حاضر هستند.</p>
+            <p>۵ نفر غایب هستند.</p>
             </div>
             <div className={style.left}>
                  <Dropdown options={options1} defualt={"به ترتیب کد ملی"} onSelect={handleSelect} />
-
+                 <div className={style.search}>
+                    <input 
+                    type="text" 
+                    placeholder="جستجو میان دانش آموزان..." 
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    />
+                    <img src={searchIcon} alt="جستجو" />
+                </div>
             </div>
         </div>
+        
         <div className={style.table}>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
-        <div className={style.row}>
-          <div className={style.item}>
-            <p>صدرا </p>
-          </div>
-          <div className={`${style.item} ${style.display}`}>
-              <p>شعبان نژاد</p>
-          </div>
-          <div className={style.item}>
-            <p><span className={style.display}>کد ملی:</span>-----------</p>
-          </div>
-          <div className={style.item}>
-            <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span>غایب</p>
-          </div>
-          <div className={style.delete}>
-            <img src={delete1} alt="" />
-            <p>حذف</p>
-          </div>
-          <div className={`${style.edit} ${style.display}`}>
-            <img src={edit} alt="" />
-            <p>ویرایش</p>
-          </div>
-        </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school1.length > 25 ? stu_school1.slice(0, 25) + '...' : stu_school1}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school2.length > 25 ? stu_school2.slice(0, 25) + '...' : stu_school2}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school3.length > 25 ? stu_school3.slice(0, 25) + '...' : stu_school3}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school4.length > 25 ? stu_school4.slice(0, 25) + '...' : stu_school4}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school5.length > 25 ? stu_school5.slice(0, 25) + '...' : stu_school5}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school1.length > 25 ? stu_school1.slice(0, 25) + '...' : stu_school1}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school1.length > 25 ? stu_school1.slice(0, 25) + '...' : stu_school1}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school2.length > 25 ? stu_school2.slice(0, 25) + '...' : stu_school2}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school3.length > 25 ? stu_school3.slice(0, 25) + '...' : stu_school3}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school4.length > 25 ? stu_school4.slice(0, 25) + '...' : stu_school4}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school5.length > 25 ? stu_school5.slice(0, 25) + '...' : stu_school5}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
+            <div className={style.row}>
+            <div className={style.item}>
+                <p>صدرا </p>
+            </div>
+            <div className={`${style.item} ${style.display}`}>
+                <p>شعبان نژاد</p>
+            </div>
+            <div className={style.item}>
+                <p><span className={style.display}>کد ملی:</span>-----------</p>
+            </div>
+            <div className={style.item}>
+                <p>{stu_school1.length > 25 ? stu_school1.slice(0, 25) + '...' : stu_school1}</p>
+            </div>
+            <div className={style.item}>
+                <div className={style.checkbox}></div>
+                <p><span className={style.display}>است</span> غایب</p>
+            </div>
+            <div className={style.delete}>
+                <img src={delete1} alt="" />
+                <p>حذف</p>
+            </div>
+            <div className={`${style.edit} ${style.display}`}>
+                <img src={edit} alt="" />
+                <p>ویرایش</p>
+            </div>
+            </div>
         </div>
     </div>
   )

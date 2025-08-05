@@ -141,7 +141,7 @@
 }
 
 .printMenuButton {
-  background-color: #69B0B2;
+  background-color: var(--importantcolor);
   color: white;
   border: none;
   border-radius: 8px;

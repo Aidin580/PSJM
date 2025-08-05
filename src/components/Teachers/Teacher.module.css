@@ -24,6 +24,10 @@
     font-family: extra-bold;
     display: flex;
     align-items: center;
+    svg{
+        margin: 0;
+        margin-right: 15px;
+    }
     p{
         margin: 0;
         margin-right: 15px;
@@ -35,6 +39,7 @@
 .left{
     display: flex;
     align-items: center;
+    column-gap: 0.5vw;
 }
 .filter{
     color: black;
@@ -94,14 +99,22 @@
     }
 }
 .item:nth-child(1){
-    width: 10%;
+    width: 11%;
 }
 .item:nth-child(2){
-    width: 15%;
+    width: 13%;
 }
 .item:nth-child(3){
-    width: 30%;
+    width: 19%;
     justify-content: right;
+    padding-right: 15px;
+}
+.item:nth-child(4){
+    width: 19%;
+    font-size: 20px;
+}
+.item:nth-child(5){
+    width: 13%;
 }
 .checkbox{
     width: 20px;

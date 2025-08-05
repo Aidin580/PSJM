@@ -40,9 +40,7 @@ gap: 5px;
     font-family: bold;
     align-items: center;
     margin-right: 8px;
- 
-    
-    
+    outline: none;
 }
 .items p{
    transition-duration: 650ms;
@@ -69,7 +67,7 @@ gap: 5px;
     height: 50px;
     padding: 0 10px;
     margin-right: 0;
-    
+    outline: none;
 }
 .sidebaropen .top .items p{
     margin: 0;
@@ -185,7 +183,7 @@ gap: 5px;
     margin: 0;
 }
 .under{
-        height: 40px;
+    height: 40px;
     display: flex;
     justify-content: start;
     width: 100%;

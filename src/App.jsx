@@ -1,11 +1,9 @@
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
 
 // Import Pages
 import Dashbord from './pages/Dashbord/Dashbord.jsx';
-import Hozor from './pages/Hozor/Hozor.jsx';
 import Stuinfo from './pages/Stuinfo/Stuinfo.jsx';
 import Login from './pages/Login/Login.jsx';
 import Record from './pages/Record/Record.jsx';
@@ -30,7 +28,7 @@ import AboutSchool from './components/AboutSchool/AboutSchool.jsx';
 import StudentList from './components/StudentList/StudentList.jsx';
 import Teacher from './components/Teachers/Teacher.jsx';
 import Members from './components/Members/Members.jsx';
-import Week from './components/Week/Week.jsx';
+import Week from './components/Week/Week.jsx'; 
 import Graph from './components/Graph/Graph.jsx';
 import ScoreRow from './components/ScoreRow/ScoreRow.jsx';
 import ErorrAccess from './components/Erorr/Types/ErorrAccess.jsx'
@@ -55,8 +53,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Token from "./Context/Token.jsx"
 import Fetch from "./Context/FetchSchools.jsx"
 import InterceptorSetup from "./Context/InterceptorSetup.jsx"
-import SelectSchool from "./Context/SelectSchool.jsx"
-import { setSchoolIdHeader } from "./config/api.js";
 
 function App() {
   return (
@@ -120,9 +116,6 @@ function App() {
           <Route path='/About' element={<About />} />
           <Route path='/AboutSchool' element={<AboutSchool />} />
 
-          <Route path='/Hozor' element={<ProtectedRoute allowedRoles={['admin', 'teacher', 'deputy', 'principal']}>
-            <Hozor />
-          </ProtectedRoute>} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Record' element={<ProtectedRoute allowedRoles={['admin', 'teacher', 'deputy', 'principal']}>
             <Record />

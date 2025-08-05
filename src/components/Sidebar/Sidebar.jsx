@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from "./Sidebar.module.css";
 import dashboard from "../../assets/icons/Dashboard.svg"
-import hozor from "../../assets/icons/hozor&ghiyab.svg"
+import coming_soon from "../../assets/icons/coming-soon.svg"
 import asma from "../../assets/icons/asma.svg"
 import asmafull from "../../assets/icons/asma-full-logo.svg"
 import { NavLink } from "react-router-dom";
@@ -33,7 +33,7 @@ export default function Sidebar() {
       <div className={`${styles.sidebar} ${open && styles.sidebaropen}`} onClick={inm} >
         <div onClick={(e) => { e.stopPropagation() }} className={styles.top}>
           {user?.role !== 'teacher' && (<NavLink to={'/'} className={styles.items} ><img alt='' src={dashboard} /><div className={styles.line} />{open && <p>داشبورد</p>}</NavLink>)}
-          <NavLink to={'/Hozor'} className={styles.items} ><img alt='' src={hozor} /><div className={styles.line} /> {open && <p>حضور و غیاب</p>}</NavLink>
+          <NavLink to={'/coming-soon'} className={styles.items} ><img alt='' src={coming_soon} /><div className={styles.line} /> {open && <p>بزودی</p>}</NavLink>
           <NavLink to={'/Record'} className={styles.items} ><img alt='' src={accc} /><div className={styles.line} />{open && <p>کارنامه و آمار تحصیلی</p>}</NavLink>
 
           {(user?.role !== 'teacher' || user?.role === 'deputy') && (<div className={styles.bigitems} >
