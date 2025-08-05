@@ -1,0 +1,44 @@
+.News {
+  width: 100%;
+  height: 35.5vh;
+  background-color: white;
+  border-radius: 16px;
+  margin-top: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  height: 45px;
+  width: 100%;
+  background: linear-gradient(to left, var(--importantcolor), white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  justify-content: start;
+  margin-bottom: 5px;
+}
+
+.Header h3 {
+  margin: 0;
+  color: white;
+  font-weight: bold;
+}
+
+.Contents {
+  height: calc(100% - 50px);
+  width: 100%;
+  overflow-y: auto;
+  
+}
+
+
+@media screen and (max-width: 450px){
+  .News{
+      height: 32.5vh;
+    margin-top: 1vh;
+      border-radius: 13px;
+  }
+}

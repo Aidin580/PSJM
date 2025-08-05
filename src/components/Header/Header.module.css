@@ -1,0 +1,129 @@
+.Header {
+    width: 97vw;
+    height: 50px;
+    background-color: var(--solidwhite);
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    direction: ltr;
+    z-index: 20;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+.left {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    align-items: center;
+}
+
+.right {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    direction: rtl;
+    position: relative;
+    column-gap: 0.5vw;
+}
+
+.right_logo {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo_dad {
+    width: 87%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px;
+}
+.logo {
+    height: 100%;
+    color: var(--solidwhite);
+    background-color: var(--importantcolor);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.gs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.2vw;
+}
+.admin_txt {
+    width: 3.4vw;
+    height: 2.3vh;
+    font-size: 0.7vw;
+    font-family: Bold;
+    margin: 0;
+    color: var(--solidwhite);
+    background: #6B69B2;
+    border-radius: 3px;
+    padding: 2px 0;
+
+}
+.admin_logo {
+    width: 3.4vw;
+    font-family: Bold;
+    margin: 0;
+    color: #fff;
+    background: var(--importantcolor);
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+.user_profile {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 0.4vw;
+}
+.user_pic {
+    height: 100%;
+}
+.amin {
+    height: 100%;
+}
+.user_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--solidblack);
+    font-family: Bold;
+    p {
+        margin: 0;
+    }
+}
+.user_role {
+    font-size: 0.5vw;
+}
+.username {
+    font-size: 0.8vw;
+}
+
+.vertical_line {
+    width: 2px;
+    height: 37px;
+    background: var(--backcolor);
+}
+
+@media screen and (max-width:450px) {
+    .Header {
+        width: 93vw;
+        margin: 0;
+        border-radius: 12px;
+        right: 14px;
+        top: 10px;
+    }
+}

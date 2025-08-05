@@ -1,0 +1,71 @@
+/* فایل: CalendarInputPop.module.css */
+
+.calendar {
+ direction: rtl;
+ font-family: bold; /* مرورگر این را به عنوان font-weight: bold تفسیر می‌کند */
+ color: black; 
+}
+
+.header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 8px;
+}
+
+.navButton {
+ background: none;
+ border: none;
+ cursor: pointer;
+ margin: 0 10px;
+ display: flex;
+ align-items: center;
+}
+
+.Yearname{
+  font-size: 21px;
+}
+
+.headerr{
+  display: flex;
+   align-items: center;
+   width: 100px; /* این عرض ممکن است نیاز به تنظیم داشته باشد */
+}
+
+.table {
+ width: 100%;
+ border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th {
+ padding: 10px;
+ font-weight: bold;
+ text-align: center;
+}
+
+td {
+ padding: 10px;
+ text-align: center;
+ border-radius: 6px;
+ cursor: pointer;
+}
+
+/* این کلاس، روز تعطیل را قرمز می‌کند */
+.holiday {
+  color: red;
+}
+
+/* این کلاس، پس‌زمینه روز جاری را مشخص می‌کند */
+.today {
+ background-color: #e0f2f1; /* رنگ از پیشنهاد قبلی، می‌توانید تغییر دهید */
+ color: rgb(0, 0, 0);
+ font-weight: bold;
+ border-radius: 6px;
+}
+
+/* این تنها کلاس اضافه شده برای نمایش بصری روز انتخاب شده است */
+.selected {
+  background-color: #68B0AB;
+  color: white;
+}

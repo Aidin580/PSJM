@@ -1,0 +1,219 @@
+ .settingsPanel {
+    width: 100%;
+    height: 100%;
+    font-family: bold;
+    padding: 20px 10px 10px 10px;
+    text-align: center;
+}
+.profilePanelIcon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.toptitle{
+    width: 60px;
+    height: 60px;
+}
+.alerterror{
+     background-color: #fdecea;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.alarmError {
+  border: 1px solid #e53e3e; /* بوردر قرمز رنگ */
+  background-color: #fff5f5; /* پس‌زمینه قرمز خیلی روشن */
+  box-shadow: 0 0 5px rgba(229, 62, 62, 0.5); /* یک سایه ملایم برای تاکید بیشتر */
+  transition: all 0.2s ease-in-out;
+}
+
+.alerterror {
+  color: #e53e3e;
+  background-color: #fed7d7;
+  border: 1px solid #f56565;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+ .settingsPanel h3{
+ margin: 0;
+ margin-top: 5px;
+ }
+.button{
+    width: 100%;
+    height: 50px;
+    background-color: var(--backcolor);
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.green{
+    background-color: var(--importantcolor);
+    color: white;
+}
+.alarms{
+    width: 100%;
+    height: 60px;
+    border-radius: 12px;
+      background-color: var(--backcolor);
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+}
+.name{
+    margin: 0;
+    font-size: 15px;
+}
+.alarmoff{
+    opacity: 50%; 
+    pointer-events: none;
+}
+.alarmcont{
+display: flex;
+gap: 10px;
+}
+
+
+.togglebutton {
+    width: 80px;  /* عرض کلید */
+    height: 34px; /* ارتفاع کلید */
+    background-color: #f8f8f8; /* رنگ پس‌زمینه در حالت خاموش */
+    border-radius: 17px; /* گرد کردن گوشه‌ها */
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* استایل دایره سفیدرنگ داخل کلید */
+.circle {
+    width: 26px;  /* قطر دایره */
+    height: 26px; /* قطر دایره */
+    background-color: var(--importantcolor);
+    border-radius: 50%; /* کاملا گرد */
+    position: absolute;
+    left: 4px; /* موقعیت اولیه در حالت خاموش */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* استایل برای حالت روشن (وقتی کلاس .on اضافه می‌شود) */
+.togglebutton.on {
+    background-color: var(--importantcolor); /* رنگ سبز برای حالت روشن */
+}
+
+/* حرکت دادن دایره به سمت راست در حالت روشن */
+.togglebutton.on .circle {
+    transform: translateX(45px); 
+    background-color: white;
+}
+
+/* استایل متن‌ها */
+.onText, .offText {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    /* جلوگیری از انتخاب متن یا اختلال در کلیک */
+    user-select: none; 
+
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* استایل متن "روشن" */
+.onText {
+    left: 12px;
+    
+}
+
+/* نمایش متن "روشن" در حالت روشن */
+.togglebutton.on .onText {
+    opacity: 1;
+}
+
+/* استایل متن "خاموش" */
+.offText {
+    right: 8px;
+   
+    color: var(--importantcolor); /* رنگ تیره‌تر برای خوانایی بهتر در پس‌زمینه خاکستری */
+}
+
+/* مخفی کردن متن "خاموش" در حالت روشن */
+.togglebutton.on .offText {
+       opacity: 0;
+}
+
+
+
+/* استایل یک گزینه‌ی تنها با ظاهر رادیو باتن */
+.radioOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+ z-index: 5;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    user-select: none; 
+    
+}
+
+
+
+/* دایره بیرونی */
+.radioOuterCircle {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--importantcolor);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+    transition: border-color 0.3s ease;
+}
+
+/* دایره داخلی (نقطه انتخاب) */
+.radioInnerCircle {
+    width: 12px;
+    height: 12px;
+    background-color: var(--importantcolor);
+    border-radius: 50%;
+    transform: scale(0); /* در حالت خاموش، اندازه‌اش صفر است (مخفی) */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* انیمیشن فنری */
+}
+
+.radioLabel {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.radioOption.selected .radioOuterCircle {
+    border-color: var(--importantcolor);
+}
+
+.radioOption.selected .radioInnerCircle {
+    transform: scale(1); /* نمایش نقطه داخلی */
+}
+
+.radioOption.selected .radioLabel {
+    color: #000;
+}
+

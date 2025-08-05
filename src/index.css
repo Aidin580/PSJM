@@ -1,0 +1,29 @@
+@font-face {
+  font-family: bold;
+  src: url("./assets/Fonts/PEYDA-BOLD\(@VIERATEC\).TTF")format("truetype");
+
+}
+@font-face {
+  font-family: extra-bold;
+  src: url("./assets/Fonts/PEYDA-EXTRABOLD(@VIERATEC).TTF")format("truetype");
+}
+*{
+  box-sizing: border-box;
+  user-select: none;
+   font-weight: normal !important;
+}
+:root{
+  --backcolor:#C8C5DA;
+  --importantcolor:#6B69B2; 
+  --outback:#ffcfd0;
+  --outbutton:#b06869;
+  --inback:#e8fffd;
+  --solidwhite:#fff;
+  --solidblack:#000
+}
+body {
+  margin: 0;
+  overflow: hidden;
+ 
+}
+

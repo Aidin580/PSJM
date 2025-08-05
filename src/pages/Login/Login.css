@@ -1,0 +1,77 @@
+.Login--Right{
+    height: 100vh;
+    width: 40%;
+
+    display: inline-block;
+}
+.Login--Left{
+    height: 100vh;
+    margin-right: 20px;
+    width: 58%;
+    display: inline-block;
+}
+.Login{
+    display: flex;
+    padding: 0 30px;
+}
+.swiper-pagination{
+  left: 60px !important;
+  top: auto !important;
+  transform: translateY(-50%);
+  right: auto !important;
+  bottom: 10px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  rotate: 90deg;
+}
+.swiper-pagination-bullet {
+  background-color: rgb(255, 255, 255) !important;
+  opacity: 1;
+  scale: 1.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: rgb(116, 116, 116) !important;
+}
+@media screen and (max-width: 1033px){
+.Login--Right{
+    height: 100vh;
+    width: 58%;
+
+    display: inline-block;
+}
+.Login--Left{
+    height: 100vh;
+    margin-right: 20px;
+    width: 40%;
+    display: inline-block;
+}
+}
+@media screen and (max-width: 450px){
+  .Login--Right{
+    width: 100vw;
+    display: block;
+    position: absolute;
+    top: 1vh;
+    left: 50%;
+    transform: translate(-50%);
+
+  }
+  .Login--Left{
+    height: 100vh;
+    margin-right: 20px;
+    width: 100%;
+    display: block;
+    position: absolute;
+     top: 51vh;
+      left: 50%;
+    transform: translate(-50%);
+}
+.Login{
+  flex-direction: column;
+  padding: 0 10px;
+  overflow-y: auto;
+  height: 100vh;
+}
+}
