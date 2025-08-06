@@ -3,7 +3,7 @@ import styles from "./DashboardTile.module.css"
 import student from "../../assets/icons/student.svg"
 import teacher from "../../assets/icons/teachers.svg"
 import kadr from "../../assets/icons/kadr.svg"
-import calender from "../../assets/icons/work-list.svg"
+import calender from "../../assets/icons/buildings.svg"
 import { NavLink } from "react-router-dom";
 import api, { endpoints } from "../../config/api";
 
@@ -76,7 +76,7 @@ export default function DashboardTile() {
               <h1>۱۲۷</h1>
             </div>
       </NavLink>
-      <NavLink to={"/week"} className={styles.tile}>
+      <NavLink to={"/schools"} className={styles.tile}>
           <div className={styles.header}>
             <p >لیست کل مدارس</p>
             <img src={calender} alt=""/>

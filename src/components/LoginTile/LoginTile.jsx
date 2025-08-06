@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import style from "./LoginTile.module.css";
 import logo from '../../assets/icons/sjm-logo-green.svg';
+import x_panel from '../../assets/icons/x-panel-logo.svg';
 import user from '../../assets/icons/user.svg';
 import axios from 'axios';
 import api,{ endpoints } from '../../config/api';
@@ -157,9 +158,7 @@ export default function LoginTile() {
     <div className={style.container}>
       <FetchSchools/>
       <div className={style.pic}>
-        <img src={user} alt='' />
-        <div />
-        <img src={logo} alt='' />
+        <img src={x_panel} alt='' />
       </div>
 
       {backendMessage && (
@@ -192,17 +191,6 @@ export default function LoginTile() {
           onBlur={validatePassword}
           placeholder="رمز عبور"
         />
-      </div>
-
-      <div className={style.checkboxWrapper}>
-        <label>
-          <input
-            type="checkbox"
-            checked={remember_me}
-            onChange={(e) => setRemember_me(e.target.checked)}
-          />
-          مرا به خاطر بسپار
-        </label>
       </div>
 
       <button onClick={handleLogin} disabled={loading}>

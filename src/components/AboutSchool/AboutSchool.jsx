@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import style from './AboutSchool.module.css';
-import MatchingModal from '../../components/MatchingModal/MatchingModal';
 import { useNavigate } from 'react-router-dom';
 
 export default function AboutSchool() {
@@ -21,11 +20,6 @@ export default function AboutSchool() {
 
   return (
     <div className={style.AboutSchool}>
-        <MatchingModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSave={handleSaveConnections} 
-            />
       <p className={style.attention}>تغییرات به صورت خودکار ذخیره میشوند</p>
       <div className={style.container}>
         <div className={style.right}>

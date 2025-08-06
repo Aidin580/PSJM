@@ -24,15 +24,15 @@
 }
 .App::after{
   content: "";
-  background-image: url(./assets//icons/sjm-logo-green.svg);
+  background-image: url(./assets//icons/arcanix-team-purple.svg);
  position: fixed;
  background-repeat: no-repeat;
  width: 1400px;
  background-size: contain;
- left:-100px;
- bottom: -80px;
+ left: -10px;
+ bottom: -60px;
  height: 840px;
- opacity: 20%;
+ opacity: 100%;
  z-index: -1 !important;
 }
 a{

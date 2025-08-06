@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import style from './UserEdit.module.css';
-import MatchingModal from '../../components/MatchingModal/MatchingModal';
 import { useNavigate } from 'react-router-dom';
 
 export default function UserEdit() {
