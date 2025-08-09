@@ -2,7 +2,7 @@ import style from "./Class.module.css";
 import delete1 from "../../assets/icons/delete.svg";
 import edit from "../../assets/icons/edit.svg";
 import Laptop from "../../assets/icons/Laptop.svg";
-import drop from "../../assets/icons/dropGreen.svg";
+import drop from "../../assets/icons/Drop.svg";
 import React, { useState, useEffect, useRef } from "react";
 import api, { endpoints } from "../../config/api";
 

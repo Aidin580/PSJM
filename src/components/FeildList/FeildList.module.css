@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    background: #fff;
+    padding: 10px 0;
+}
+
+.back_container {
+  padding: 0.3vw 1vw;
+  background: #FFFFFF;
+  border: 0.4vw solid #C6C5DA;
+  border-radius: 10px;
+  position: absolute;
+  top: -1.8vh;
+  right: -1.5vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.3vw;
+  z-index: 1000;
+  cursor: pointer;
+}
+.back_img {
+  width: 2vw;
+  height: 2vw;
+  margin: 0;
+}
+.back_txt {
+  color: #000;
+  font-family: Bold;
+  margin: 0;
+  font-size: 1vw;
+}

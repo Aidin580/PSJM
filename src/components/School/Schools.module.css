@@ -97,6 +97,7 @@
 }
 .item:nth-child(2){
     width: 4%;
+    height: 5.3vh;
 }
 .item:nth-child(3){
     width: 8%;

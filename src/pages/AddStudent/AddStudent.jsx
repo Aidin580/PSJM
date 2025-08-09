@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import Calenderinput from '../../components/Calendar/calendarInput';
 
-import drop_blue from '../../assets/icons/Drop-blue.svg';
+import drop_blue from '../../assets/icons/Drop.svg';
 import image_preview from '../../assets/icons/image-preview.svg';
 import back from '../../assets/icons/back.svg';
 

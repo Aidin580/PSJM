@@ -2,9 +2,7 @@ import './App.css';
 import { ToastContainer } from 'react-toastify';
 import { Routes, Route } from 'react-router-dom';
 
-// Import Pages
 import Dashbord from './pages/Dashbord/Dashbord.jsx';
-import Stuinfo from './pages/Stuinfo/Stuinfo.jsx';
 import Login from './pages/Login/Login.jsx';
 import Chat from './pages/chat/Chat.jsx';
 import PageNotFound from './components/Erorr/Types/PageNotFound.jsx';
@@ -15,9 +13,9 @@ import AddDeputy from './pages/AddDeputy/AddDeputy.jsx';
 import EditUser from './pages/EditUser/EditUser.jsx';
 import AddClass from './pages/AddClass/AddClass.jsx';
 import EditSchoolInfo from './pages/EditSchoolInfo/EditSchoolInfo.jsx';
+import FeildList from './components/FeildList/FeildList.jsx';
 
 
-import Mdocument from "./pages/Mdocument/Mdocument.jsx";
 import EditSchool from "./pages/EditSchool/EditSchool.jsx";
 import AboutSchool from './components/AboutSchool/AboutSchool.jsx';
 
@@ -25,8 +23,7 @@ import AboutSchool from './components/AboutSchool/AboutSchool.jsx';
 import StudentList from './components/StudentList/StudentList.jsx';
 import Teacher from './components/Teachers/Teacher.jsx';
 import Members from './components/Members/Members.jsx';
-import Schools from './components/School/Schools.jsx'; 
-import ScoreRow from './components/ScoreRow/ScoreRow.jsx';
+import Schools from './components/School/Schools.jsx';
 import ErorrAccess from './components/Erorr/Types/ErorrAccess.jsx'
 
 
@@ -76,6 +73,7 @@ function App() {
           <Route path='/About' element={<About />} />
           <Route path='/AboutSchool' element={<AboutSchool />} />
           <Route path='/EditSchoolInfo' element={<EditSchoolInfo />} />
+          <Route path='/feildList' element={<FeildList />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/chat' element={<ProtectedRoute allowedRoles={['admin']}>
             <Chat />
