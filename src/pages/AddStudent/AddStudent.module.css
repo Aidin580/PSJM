@@ -117,27 +117,7 @@
   flex-direction: column;
   align-items: flex-end;
 }
-.form_style2 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.form_style3 {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
 .inputs {
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  column-gap: 0.5vw;
-  margin-bottom: 0.8vh;
-}
-.inputs3 {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;

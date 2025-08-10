@@ -3,445 +3,184 @@ import Sidebar from '../Sidebar/Sidebar';
 import styles from './FeildList.module.css';
 
 
-import back from '../../assets/icons/back.svg';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 export default function FeildList() {
 
+    
+    const [searchTerm, setSearchTerm] = useState("");
+    const [editingId, setEditingId] = useState(null);
+    const [editingData, setEditingData] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [visible, setVisible] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("");
     const navigate = useNavigate();
+
+    const [items, setItems] = useState([
+        { id: 1, feild: "حسابداری", feildID: "۲۳۴۸۷۶", branch: "فنی و حرفه ای" },
+        { id: 2, feild: "گرافیک", feildID: "۴۵۶۰۹۸", branch: "فنی و حرفه ای" },
+        { id: 3, feild: "مکانیک", feildID: "۶۷۸۰۹۸", branch: "فنی و حرفه ای" },
+        { id: 4, feild: "معماری", feildID: "۷۸۹۰۹۸", branch: "فنی و حرفه ای" },
+        { id: 5, feild: "برق", feildID: "۱۲۳۳۲۱", branch: "فنی و حرفه ای" },
+        { id: 6, feild: "شبکه و نرم افزار", feildID: "۱۲۱۲۳۳", branch: "فنی و حرفه ای" },
+    ]);
 
     const onClose = () => {
     navigate('/schools');
     };
 
+    const visibleSchools = items.filter(
+        (s) =>
+        s.feild.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        s.feildID.includes(searchTerm)
+    );
+
+    const handleDelete = (id) => {
+        setItems((prev) => prev.filter((item) => item.id !== id));
+        if (editingId === id) {
+            setEditingId(null);
+            setEditingData(null);
+        }
+    };
+    const startEdit = (s) => {
+        setEditingId(s.id);
+        setEditingData({ ...s });
+    };
+    const handleSave = () => {
+        if (!editingData) return;
+        setItems(prev =>
+            prev.map(item => item.id === editingId ? editingData : item)
+        );
+        setEditingId(null);
+        setEditingData(null);
+    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setSelectedItem(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
     return (
         <div>
             <Header />
-            <div className='App-Container'>
+                <div className='App-Container'>
                 <Sidebar />
-                <div className='Main-Content' id='main'>
-                    <div className={styles.container}>
+                <div className={styles.container}>
 
-                    {/*<div className={styles.header}>
-                            <div className={styles.right}>
-                                <svg width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.26494 0.964844C3.38088 0.964844 2.53303 1.31603 1.90791 1.94115C1.28279 2.56628 0.931603 3.41412 0.931603 4.29818C0.931603 5.18223 1.28279 6.03008 1.90791 6.6552C2.53303 7.28032 3.38088 7.63151 4.26494 7.63151C5.14899 7.63151 5.99684 7.28032 6.62196 6.6552C7.24708 6.03008 7.59827 5.18223 7.59827 4.29818C7.59827 3.41412 7.24708 2.56628 6.62196 1.94115C5.99684 1.31603 5.14899 0.964844 4.26494 0.964844ZM7.98401 0.964844C7.98734 0.968177 7.98639 0.976159 7.98889 0.979492C8.77889 1.86449 9.26494 3.02568 9.26494 4.29818C9.26494 5.80984 8.58363 7.16811 7.51363 8.08561L11.1904 9.13704L14.431 7.83984C15.1543 7.55151 15.9482 7.56005 16.664 7.86589C17.3799 8.17255 17.9325 8.74086 18.2216 9.46419C18.5108 10.1875 18.5023 10.9806 18.1956 11.6973C17.8889 12.4139 17.3206 12.9665 16.5973 13.2565L12.4306 14.9232C11.8348 15.1607 11.1716 15.1958 10.5507 15.0208L9.26494 14.653V14.7148V21.7982H31.3483C32.0383 21.7982 32.5983 21.239 32.5983 20.5482C32.5983 19.8573 32.0383 19.2982 31.3483 19.2982H30.9316V2.21484C30.9316 1.52401 30.3716 0.964844 29.6816 0.964844H7.98401ZM5.49052 9.28516C5.40087 9.28424 5.31138 9.29297 5.2236 9.3112C5.18124 9.30906 5.14116 9.29818 5.09827 9.29818H2.59827C1.21744 9.29818 0.0982695 10.4173 0.0982695 11.7982V21.7982V29.7148C0.095927 29.8805 0.126528 30.0449 0.188296 30.1986C0.250063 30.3524 0.341764 30.4923 0.458069 30.6102C0.574375 30.7282 0.712966 30.8219 0.865787 30.8858C1.01861 30.9497 1.18261 30.9826 1.34827 30.9826C1.51393 30.9826 1.67793 30.9497 1.83075 30.8858C1.98357 30.8219 2.12216 30.7282 2.23847 30.6102C2.35478 30.4923 2.44648 30.3524 2.50824 30.1986C2.57001 30.0449 2.60061 29.8805 2.59827 29.7148V21.7982H5.09827V29.7148C5.09593 29.8805 5.12653 30.0449 5.1883 30.1986C5.25006 30.3524 5.34176 30.4923 5.45807 30.6102C5.57438 30.7282 5.71297 30.8219 5.86579 30.8858C6.01861 30.9497 6.18261 30.9826 6.34827 30.9826C6.51393 30.9826 6.67793 30.9497 6.83075 30.8858C6.98357 30.8219 7.12216 30.7282 7.23847 30.6102C7.35477 30.4923 7.44648 30.3524 7.50824 30.1986C7.57001 30.0449 7.60061 29.8805 7.59827 29.7148V18.8815V12.4427L11.0048 13.416C11.271 13.4922 11.555 13.4779 11.8121 13.3753L15.9788 11.7087C16.254 11.6031 16.483 11.4038 16.6255 11.1458C16.768 10.8878 16.8148 10.5877 16.7575 10.2986C16.7003 10.0095 16.5427 9.74991 16.3127 9.56567C16.0827 9.38142 15.7949 9.28438 15.5003 9.29167C15.3459 9.29565 15.1936 9.32821 15.0511 9.3877L11.2815 10.8949L5.85836 9.34701C5.73953 9.30811 5.61554 9.28726 5.49052 9.28516Z" fill="#fff"/>
-                                </svg>
-                                <h1>لیست کل مدارس</h1>
-                                <p>۸۱ مدرسه وجود دارد.</p>
+                    <div className={styles.feilds_container}>
+                        <div className={styles.headers_container}>
+                            <div className={styles.back_container} onClick={() => onClose()}>
+                                    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.57935 12.0483L1.02378 20.7829C0.642324 21.1722 0.646215 21.795 1.03157 22.1842L2.56129 23.7139C2.95443 24.1032 3.585 24.1032 3.97425 23.71L14.8614 12.7528C15.056 12.5582 15.1533 12.3052 15.1533 12.0483C15.1533 11.7914 15.056 11.5384 14.8614 11.3438L3.97425 0.386562C3.585 -0.00657463 2.95443 -0.00657463 2.56129 0.382669L1.03157 1.9124C0.646215 2.30164 0.642324 2.92443 1.02378 3.31367L9.57935 12.0483Z" fill="white"/>
+                                    </svg>
+                                <p className={styles.back_txt}>بازگشت</p>
                             </div>
-                                <div className={styles.filter}>
-                                <Dropdown options={options} defualt={"به ترتیب کد مدرسه"} onSelect={handleSelect} />
-                                <div className={styles.search}>
-                                <input 
-                                    type="text" 
-                                    placeholder="جستجو میان دانش آموزان..."
-                                    value={searchTerm}
-                                    onChange={handleSearchChange}
-                                />
+
+                            <div className={styles.header}>
+                                <div className={styles.right}>
+                                    <svg width="41" height="37" viewBox="0 0 45 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.40358 0.102539C3.50644 0.102539 1.96984 1.63914 1.96984 3.53628V29.2893H26.006V25.8556H35.2912L36.3072 27.5725L35.2912 29.2893H43.1747V3.53628C43.1747 1.63914 41.6381 0.102539 39.741 0.102539H5.40358ZM32.8735 6.97002C33.3126 6.97002 33.7517 7.13736 34.0874 7.47301C34.7587 8.1443 34.7587 9.22947 34.0874 9.90077L25.503 18.4851C24.8317 19.1564 23.7466 19.1564 23.0753 18.4851L19.1385 14.5484L11.7681 21.9189C11.4333 22.2536 10.9937 22.4218 10.5542 22.4218C10.1147 22.4218 9.67509 22.2536 9.3403 21.9189C8.66901 21.2476 8.66901 20.1624 9.3403 19.4911L17.9247 10.9067C18.5959 10.2354 19.6811 10.2354 20.3524 10.9067L24.2891 14.8435L31.6596 7.47301C31.9953 7.13736 32.4344 6.97002 32.8735 6.97002ZM1.96984 32.7231C1.74233 32.7198 1.51646 32.7619 1.30534 32.8467C1.09421 32.9315 0.902061 33.0575 0.74004 33.2172C0.57802 33.377 0.449364 33.5673 0.36155 33.7772C0.273737 33.9871 0.228516 34.2124 0.228516 34.4399C0.228516 34.6675 0.273737 34.8927 0.36155 35.1026C0.449364 35.3125 0.57802 35.5029 0.74004 35.6626C0.902061 35.8224 1.09421 35.9483 1.30534 36.0331C1.51646 36.118 1.74233 36.16 1.96984 36.1568H43.1747C43.4022 36.16 43.6281 36.118 43.8392 36.0331C44.0503 35.9483 44.2425 35.8224 44.4045 35.6626C44.5665 35.5029 44.6952 35.3125 44.783 35.1026C44.8708 34.8927 44.916 34.6675 44.916 34.4399C44.916 34.2124 44.8708 33.9871 44.783 33.7772C44.6952 33.5673 44.5665 33.377 44.4045 33.2172C44.2425 33.0575 44.0503 32.9315 43.8392 32.8467C43.6281 32.7619 43.4022 32.7198 43.1747 32.7231H1.96984Z" fill="white"/>
+                                    </svg>
+                                    <h1>لیست دروس</h1>
+                                </div>
                             </div>
                         </div>
 
-            <div style={{ width: "99.389%" }} className={styles.row}>
-                <div className={styles.item}>
-                    <p>نام آموزشگاه</p>
-                </div>
-                <div className={styles.item}>
-                    <p>جنسیت</p>
-                </div>
-                <div className={styles.item}>
-                    <p>استان</p>
-                </div>
-                <div className={styles.item}>
-                    <p>شهر</p>
-                </div>
-                <div className={styles.item}>
-                    <p>وضعیت</p>
-                </div>
-                <div className={styles.item}>
-                    <p>کد مدرسه</p>
-                </div>
-                <div className={styles.item}>
-                    <p>حاضرین</p>
-                </div>
-                <div className={styles.item}>
-                    <p>غایبین</p>
-                </div>
-                <div className={styles.item}>
-                    <p>نام مدیریت</p>
-                </div>
+                        <div className={styles.days}>
+                            <div className={styles.table}>
+                                {visibleSchools.map((s) => (
+                                    <div className={`${styles.row} ${editingId === s.id ? styles.editing : ''}`} key={s.id}>
+                                        {editingId === s.id ? (
+                                            <>
+                                                <div className={styles.item}>
+                                                    <input
+                                                        value={editingData?.feild ?? ""}
+                                                        onChange={(e) => setEditingData(prev => ({ ...prev, feild: e.target.value }))}
+                                                    />
+                                                </div>
+                                                <div className={styles.item}>
+                                                    <input
+                                                        value={editingData?.feildID ?? ""}
+                                                        onChange={(e) => setEditingData(prev => ({ ...prev, feildID: e.target.value }))}
+                                                    />
+                                                </div>
+                                                <div className={styles.item}>
+                                                    <div className={styles.arrowBox} onClick={() => setVisible(!visible)}>
+                                                        <svg
+                                                        className={`${styles.arrow} ${visible ? styles.rotate : ''}`}
+                                                        viewBox="0 0 26 16"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        >
+                                                        <path d="M13.1299 9.96316L4.53266 1.36591C3.60116 0.434414 2.08916 0.434414 1.15766 1.36591C0.226158 2.29741 0.226158 3.80941 1.15766 4.74091L11.5392 15.1224C12.4189 16.0022 13.8432 16.0022 14.7207 15.1224L25.1022 4.74091C26.0337 3.80941 26.0337 2.29741 25.1022 1.36591C24.1707 0.434414 22.6587 0.434414 21.7272 1.36591L13.1299 9.96316Z" fill="#6B69B2" />
+                                                        </svg>
+                                                    </div>
+                                                    <div className={styles.displayBox} onClick={() => setVisible(!visible)}>
+                                                        {editingData?.branch || "فنی و حرفه ای"}
+                                                    </div>
+                                                    <div className={`${styles.dropdownMenu} ${visible ? styles.show : styles.hide}`}>
+                                                        {["کارودانش", "فنی و حرفه ای", "نظری"].map(option => (
+                                                        <div
+                                                            key={option}
+                                                            className={styles.dropdownItem}
+                                                            onClick={e => {
+                                                            e.stopPropagation();
+                                                            setEditingData(prev => ({ ...prev, branch: option }));
+                                                            setVisible(false);
+                                                            }}
+                                                        >
+                                                            {option}
+                                                        </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
 
-            </div>
+                                                {/* دکمه حذف در حالت ویرایش */}
+                                                <div className={`${styles.delete} ${styles.display}`} onClick={() => handleDelete(s.id)}>
+                                                    <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M3.19287 24.7732C3.19287 26.4654 4.58023 27.8496 6.27623 27.8496H18.6096C20.3055 27.8496 21.6929 26.4654 21.6929 24.7732V7.03711H3.19287V24.7732ZM24.0054 2.41211H18.2241L16.2885 0.0996094H8.59733L6.66162 2.41211H0.880371V4.72461H24.0054V2.41211Z" fill="white"/>
+                                                    </svg>
+                                                    <p>حذف</p>
+                                                </div>
+                                                {/* دکمه تایید در حالت ویرایش */}
+                                                <div className={`${styles.submit} ${styles.display}`} onClick={handleSave}>
+                                                    <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M28.1051 2.21605L25.5953 0.510063C24.9009 0.0398242 23.9495 0.220266 23.4847 0.909219L11.182 19.0517L5.52816 13.3979C4.93763 12.8073 3.97528 12.8073 3.38475 13.3979L1.23587 15.5468C0.645336 16.1373 0.645336 17.0996 1.23587 17.6956L9.92981 26.3896C10.4165 26.8762 11.182 27.248 11.8709 27.248C12.5599 27.248 13.2543 26.8161 13.7027 26.1654L28.5097 4.32118C28.9799 3.63223 28.7995 2.68628 28.1051 2.21605Z" fill="white"/>
+                                                    </svg>
+                                                    <p>تایید</p>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            /* حالت عادی نمایش */
+                                            <>
+                                                <div className={styles.item}><p>{s.feild}</p></div>
+                                                <div className={styles.item}><p>{s.feildID}</p></div>
+                                                <div className={styles.item}><p>{s.branch}</p></div>
 
-            <div className={styles.days}>
-
-                <div className={styles.table}>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>هنرستان حاج سید محمد نظام فصیحی لنگرودی</p>
+                                                {/* حذف در حالت عادی */}
+                                                <div className={`${styles.delete} ${styles.display}`} onClick={() => handleDelete(s.id)}>
+                                                    <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M3.19287 24.7732C3.19287 26.4654 4.58023 27.8496 6.27623 27.8496H18.6096C20.3055 27.8496 21.6929 26.4654 21.6929 24.7732V7.03711H3.19287V24.7732ZM24.0054 2.41211H18.2241L16.2885 0.0996094H8.59733L6.66162 2.41211H0.880371V4.72461H24.0054V2.41211Z" fill="white"/>
+                                                    </svg>
+                                                    <p>حذف</p>
+                                                </div>
+                                                {/* ویرایش در حالت عادی */}
+                                                <div className={`${styles.edit} ${styles.display}`} onClick={() => startEdit(s)}>
+                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.1791 6.22253L23.6664 8.73522L18.8199 4.03722L21.4068 1.45028C22.0397 0.81744 22.898 0.461914 23.793 0.461914C24.6879 0.461914 25.5463 0.81744 26.1791 1.45028C26.8119 2.08312 27.1675 2.94143 27.1675 3.8364C27.1675 4.73137 26.8119 5.58969 26.1791 6.22253ZM22.1949 10.205L6.74584 25.6541L0.167969 27.4867L1.97191 20.8835L17.3636 5.49184L22.1949 10.205Z" fill="white"/>
+                                                    </svg>
+                                                    <p>ویرایش</p>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>فرزاد باهک</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>هنرستان حاج میرزا علی‌اکبر صالحی رودباری</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>احمد مسلمی</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>دبیرستان دخترانه اندیشه</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>مهسا هنرمند</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>هنرستان پاسارگاد</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>حمیدرضا یوسفی</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>دبیرستان دخترانه شهید منصور ستاری</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>فاطمه بنیادی</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>دبستان شهید محمد حسین فهمیده</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>علیرضا منصوری</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>هنرستان حاج سید محمد نظام فصیحی لنگرودی</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>فرزاد باهک</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>هنرستان حاج میرزا علی‌اکبر صالحی رودباری</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>احمد مسلمی</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>دبیرستان دخترانه اندیشه</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>مهسا هنرمند</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>هنرستان پاسارگاد</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>حمیدرضا یوسفی</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>دبیرستان دخترانه شهید منصور ستاری</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>فاطمه بنیادی</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                    <div className={styles.row}>
-                        <div className={styles.item}>
-                            <p>دبستان شهید محمد حسین فهمیده</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>گیلان</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>لنگرود</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>باز</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۳۴۹۸۷</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۲۴۱</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>۱۸</p>
-                        </div>
-                        <div className={styles.item}>
-                            <p>علیرضا منصوری</p>
-                        </div>
-
-                        <div className={`${styles.edit} ${styles.display}`} onClick={handleEditClick}>
-                            <p>مدیریت</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                    </div>*/}
-
                     </div>
                 </div>
             </div>

@@ -1,12 +1,12 @@
 .container{
     width: 100%;
-      height: fit-content;
-     background-color: white;
-     margin-top: 25px;
-     border-radius: 16px;
-     padding: 20px 25px 12px 14px;
-     font-family: bold;
-     user-select: none;
+    height: fit-content;
+    background-color: white;
+    margin-top: 25px;
+    border-radius: 16px;
+    padding: 20px 25px 12px 14px;
+    font-family: bold;
+    user-select: none;
 }
 .days::-webkit-scrollbar{
   border-radius: 16px;
@@ -256,18 +256,19 @@ user-select: none;
   .double p{
     text-align: center;
   }
-  .half {
-    display: flex;
-    flex: 1;
-    background-color: rgb(255, 255, 255);
-    border-radius: 8px;
-    height: 40px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    
-  }
-    @media screen and (max-width:1024px){
+.half {
+  display: flex;
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  height: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media screen and (max-width:1024px){
       .days{
     height: 100%;
     max-height: 250px;
@@ -310,7 +311,7 @@ user-select: none;
      
 }
     
-  @media screen and (max-width:450px) {
+@media screen and (max-width:450px) {
  .header{
     width: 100%;
       

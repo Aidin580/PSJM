@@ -591,7 +591,7 @@ export default function AddStudent() {
                       <div className={style.right_line} />
                     </div>
 
-                    <form onSubmit={formik.handleSubmit} className={style.form_style3}>
+                    <form onSubmit={formik.handleSubmit} className={style.form_style}>
                       
                       {[
                           {
@@ -701,7 +701,7 @@ export default function AddStudent() {
                   </div>
 
                   <div className={style.left_inputs}>
-                    <form onSubmit={formik.handleSubmit} className={style.form_style2}>
+                    <form onSubmit={formik.handleSubmit} className={style.form_style}>
                       
                     <div className={style.sec_header}>
                       <div className={style.left_line} />
@@ -802,7 +802,7 @@ export default function AddStudent() {
 
                     {fields4.map((fields, index) => (
                         <React.Fragment key={index}>
-                          <div className={style.inputs3}>
+                          <div className={style.inputs}>
                             <input
                               className={style.txt_inp}
                               id={fields.name}
