@@ -23,9 +23,6 @@ export default function StudentList() {
   const stu_school3 = "دبستان شهید یاسر اکبری لنگرود"
   const stu_school4 = "دبستان شهید منصور ستاری"
   const stu_school5 = "دبیرستان شهید جعفر بازیار"
-
-
-  const absentList = [];
   
 
   useEffect(() => {
@@ -142,7 +139,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -168,7 +165,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -194,7 +191,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -220,7 +217,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -246,7 +243,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -272,7 +269,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -298,7 +295,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -324,7 +321,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -350,7 +347,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -376,7 +373,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -402,7 +399,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />
@@ -428,7 +425,7 @@ export default function StudentList() {
           </div>
           <div className={style.item}>
             <div className={style.checkbox}></div>
-            <p><span className={style.display}>است</span> غایب</p>
+            <p>غایب <span className={style.display}>است</span></p>
           </div>
           <div className={style.delete}>
             <img src={delete1} alt="" />

@@ -14,6 +14,8 @@ import EditUser from './pages/EditUser/EditUser.jsx';
 import AddClass from './pages/AddClass/AddClass.jsx';
 import EditSchoolInfo from './pages/EditSchoolInfo/EditSchoolInfo.jsx';
 import FeildList from './components/FeildList/FeildList.jsx';
+import BookList from './components/BookList/BookList.jsx';
+import SchoolList from './components/SchoolList/SchoolList.jsx';
 
 
 import EditSchool from "./pages/EditSchool/EditSchool.jsx";
@@ -74,6 +76,8 @@ function App() {
           <Route path='/AboutSchool' element={<AboutSchool />} />
           <Route path='/EditSchoolInfo' element={<EditSchoolInfo />} />
           <Route path='/feildList' element={<FeildList />} />
+          <Route path='/bookList' element={<BookList />} />
+          <Route path='/schoolList' element={<SchoolList />}/>
           <Route path='/Login' element={<Login />} />
           <Route path='/chat' element={<ProtectedRoute allowedRoles={['admin']}>
             <Chat />

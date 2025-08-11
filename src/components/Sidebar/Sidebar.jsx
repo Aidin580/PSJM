@@ -42,10 +42,10 @@ export default function Sidebar() {
             <NavLink to={'/feildList'} className={styles.under}>
               <img alt='' src={addFeild} /><div className={styles.line} />{open && <p>افزودن رشته</p>}
             </NavLink>
-            <NavLink to={'/i-dont-know'} className={styles.under}>
+            <NavLink to={'/bookList'} className={styles.under}>
               <img alt='' src={addBook} /><div className={styles.line} />{open && <p>افزودن دروس</p>}
             </NavLink>
-            <NavLink to={'/schools'} className={styles.under}>
+            <NavLink to={'/schoolList'} className={styles.under}>
               <img alt='' src={addSchool} /><div className={styles.line} />{open && <p>افزودن آموزشگاه</p>}
             </NavLink>
             <NavLink to={'/i-dont-know'} className={styles.under}>

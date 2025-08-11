@@ -1,31 +1,31 @@
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
-import styles from './FeildList.module.css';
+import styles from './BookList.module.css';
 
 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-export default function FeildList() {
-    
+export default function BookList() {
+
     const [searchTerm, setSearchTerm] = useState("");
     const [editingId, setEditingId] = useState(null);
     const [editingData, setEditingData] = useState(null);
     const [visible, setVisible] = useState(false);
-    const [newFeild, setNewFeild] = useState("");
-    const [newFeildID, setNewFeildID] = useState("");
-    const [newBranch, setNewBranch] = useState("فنی و حرفه ای");
+    const [newBook, setNewBook] = useState("");
+    const [newBookID, setNewBookID] = useState("");
+    const [newFeild, setNewFeild] = useState("شبکه و نرم افزار رایانه");
     const [isAdding, setIsAdding] = useState(false);
     const navigate = useNavigate();
 
     const [items, setItems] = useState([
-        { id: 1, feild: "حسابداری", feildID: "۲۳۴۸۷۶", branch: "فنی و حرفه ای" },
-        { id: 2, feild: "گرافیک", feildID: "۴۵۶۰۹۸", branch: "فنی و حرفه ای" },
-        { id: 3, feild: "مکانیک", feildID: "۶۷۸۰۹۸", branch: "فنی و حرفه ای" },
-        { id: 4, feild: "معماری", feildID: "۷۸۹۰۹۸", branch: "فنی و حرفه ای" },
-        { id: 5, feild: "برق", feildID: "۱۲۳۳۲۱", branch: "فنی و حرفه ای" },
-        { id: 6, feild: "شبکه و نرم افزار", feildID: "۱۲۱۲۳۳", branch: "فنی و حرفه ای" },
+        { id: 1, book: "ریاضی ۱", bookID: "۲۳۴۸۷۶", feild: "شبکه و نرم افزار" },
+        { id: 2, book: "فیزیک", bookID: "۴۵۶۰۹۸", feild: "شبکه و نرم افزار" },
+        { id: 3, book: "پایگاه داده و برنامه نویسی", bookID: "۶۷۸۰۹۸", feild: "شبکه و نرم افزار" },
+        { id: 4, book: "الزامات محیط کار", bookID: "۷۸۹۰۹۸", feild: "شبکه و نرم افزار" },
+        { id: 5, book: "نصب و راه اندازی", bookID: "۱۲۳۳۲۱", feild: "شبکه و نرم افزار" },
+        { id: 6, book: "دانش فنی تخصصی", bookID: "۱۲۱۲۳۳", feild: "شبکه و نرم افزار" },
     ]);
 
     const onClose = () => {
@@ -34,8 +34,8 @@ export default function FeildList() {
 
     const visibleSchools = items.filter(
         (s) =>
-        s.feild.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        s.feildID.includes(searchTerm)
+        s.book.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        s.bookID.includes(searchTerm)
     );
 
     const handleDelete = (id) => {
@@ -58,36 +58,35 @@ export default function FeildList() {
         setEditingData(null);
     };
     const handleAddNewFeild = () => {
-        if (!newFeild || !newFeildID || !newBranch) {
+        if (!newBook || !newBookID || !newFeild) {
             alert("لطفاً تمامی فیلدها را پر کنید.");
             return;
         }
         const newItem = {
             id: items.length + 1,
+            book: newBook,
+            bookID: newBookID,
             feild: newFeild,
-            feildID: newFeildID,
-            branch: newBranch
         };
         setItems((prevItems) => [newItem, ...prevItems]);
-        setNewFeild("");
-        setNewFeildID("");
-        setNewBranch("فنی و حرفه ای");
+        setNewBook("");
+        setNewBookID("");
+        setNewFeild("فنی و حرفه ای");
         setIsAdding(false);
     };
     const handleCancel = () => {
         setIsAdding(false);
-        setNewFeild("");
-        setNewFeildID("");
-        setNewBranch("فنی و حرفه ای");
+        setNewBook("");
+        setNewBookID("");
+        setNewFeild("فنی و حرفه ای");
     };
-
+    
     return (
         <div>
             <Header />
                 <div className='App-Container'>
                 <Sidebar />
                 <div className={styles.container}>
-
                     <div className={styles.feilds_container}>
                         <div className={styles.headers_container}>
                             <div className={styles.back_container} onClick={() => onClose()}>
@@ -102,11 +101,11 @@ export default function FeildList() {
                                     <svg width="41" height="37" viewBox="0 0 45 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5.40358 0.102539C3.50644 0.102539 1.96984 1.63914 1.96984 3.53628V29.2893H26.006V25.8556H35.2912L36.3072 27.5725L35.2912 29.2893H43.1747V3.53628C43.1747 1.63914 41.6381 0.102539 39.741 0.102539H5.40358ZM32.8735 6.97002C33.3126 6.97002 33.7517 7.13736 34.0874 7.47301C34.7587 8.1443 34.7587 9.22947 34.0874 9.90077L25.503 18.4851C24.8317 19.1564 23.7466 19.1564 23.0753 18.4851L19.1385 14.5484L11.7681 21.9189C11.4333 22.2536 10.9937 22.4218 10.5542 22.4218C10.1147 22.4218 9.67509 22.2536 9.3403 21.9189C8.66901 21.2476 8.66901 20.1624 9.3403 19.4911L17.9247 10.9067C18.5959 10.2354 19.6811 10.2354 20.3524 10.9067L24.2891 14.8435L31.6596 7.47301C31.9953 7.13736 32.4344 6.97002 32.8735 6.97002ZM1.96984 32.7231C1.74233 32.7198 1.51646 32.7619 1.30534 32.8467C1.09421 32.9315 0.902061 33.0575 0.74004 33.2172C0.57802 33.377 0.449364 33.5673 0.36155 33.7772C0.273737 33.9871 0.228516 34.2124 0.228516 34.4399C0.228516 34.6675 0.273737 34.8927 0.36155 35.1026C0.449364 35.3125 0.57802 35.5029 0.74004 35.6626C0.902061 35.8224 1.09421 35.9483 1.30534 36.0331C1.51646 36.118 1.74233 36.16 1.96984 36.1568H43.1747C43.4022 36.16 43.6281 36.118 43.8392 36.0331C44.0503 35.9483 44.2425 35.8224 44.4045 35.6626C44.5665 35.5029 44.6952 35.3125 44.783 35.1026C44.8708 34.8927 44.916 34.6675 44.916 34.4399C44.916 34.2124 44.8708 33.9871 44.783 33.7772C44.6952 33.5673 44.5665 33.377 44.4045 33.2172C44.2425 33.0575 44.0503 32.9315 43.8392 32.8467C43.6281 32.7619 43.4022 32.7198 43.1747 32.7231H1.96984Z" fill="white"/>
                                     </svg>
-                                    <h1>لیست رشته ها</h1>
+                                    <h1>لیست دروس</h1>
                                 </div>
                                 <div className={styles.left}>
                                     <button onClick={() => setIsAdding(true)}>
-                                        افزدون رشته جدید
+                                        افزدون درس جدید
                                     </button>
                                 </div>
                             </div>
@@ -117,19 +116,19 @@ export default function FeildList() {
                                 <div className={styles.row}>
                                     <div className={styles.item}>
                                         <input
-                                            value={newFeild}
-                                            onChange={(e) => setNewFeild(e.target.value)}
-                                            placeholder="نام رشته"
+                                            value={newBook}
+                                            onChange={(e) => setNewBook(e.target.value)}
+                                            placeholder="نام درس"
                                         />
                                     </div>
                                     <div className={styles.item}>
                                         <input
-                                            value={newFeildID}
-                                            onChange={(e) => setNewFeildID(e.target.value)}
-                                            placeholder="شناسه رشته"
+                                            value={newBookID}
+                                            onChange={(e) => setNewBookID(e.target.value)}
+                                            placeholder="شناسه درس"
                                         />
                                     </div>
-                                    <div className={styles.item}>
+                                    <div className={styles.itemgg}>
                                         <div className={styles.arrowBox} onClick={() => setVisible(!visible)}>
                                             <svg
                                                 className={`${styles.arrow} ${visible ? styles.rotate : ''}`}
@@ -141,16 +140,16 @@ export default function FeildList() {
                                             </svg>
                                         </div>
                                         <div className={styles.displayBox} onClick={() => setVisible(!visible)}>
-                                            {newBranch}
+                                            {newFeild}
                                         </div>
                                         <div className={`${styles.dropdownMenu} ${visible ? styles.show : styles.hide}`}>
-                                            {["کارودانش", "فنی و حرفه ای", "نظری"].map(option => (
+                                            {["انسانی", "تجربی", "حسابداری", "شبکه و نرم افزار رایانه"].map(option => (
                                                 <div
                                                     key={option}
                                                     className={styles.dropdownItem}
                                                     onClick={e => {
                                                         e.stopPropagation();
-                                                        setNewBranch(option);
+                                                        setNewFeild(option);
                                                         setVisible(false);
                                                     }}
                                                 >
@@ -180,14 +179,14 @@ export default function FeildList() {
                                             <>
                                                 <div className={styles.item}>
                                                     <input
-                                                        value={editingData?.feild ?? ""}
-                                                        onChange={(e) => setEditingData(prev => ({ ...prev, feild: e.target.value }))}
+                                                        value={editingData?.book ?? ""}
+                                                        onChange={(e) => setEditingData(prev => ({ ...prev, book: e.target.value }))}
                                                     />
                                                 </div>
                                                 <div className={styles.item}>
                                                     <input
-                                                        value={editingData?.feildID ?? ""}
-                                                        onChange={(e) => setEditingData(prev => ({ ...prev, feildID: e.target.value }))}
+                                                        value={editingData?.bookID ?? ""}
+                                                        onChange={(e) => setEditingData(prev => ({ ...prev, bookID: e.target.value }))}
                                                     />
                                                 </div>
                                                 <div className={styles.item}>
@@ -202,16 +201,16 @@ export default function FeildList() {
                                                         </svg>
                                                     </div>
                                                     <div className={styles.displayBox} onClick={() => setVisible(!visible)}>
-                                                        {editingData?.branch || "فنی و حرفه ای"}
+                                                        {editingData?.feild || "شبکه و نرم افزار رایانه"}
                                                     </div>
                                                     <div className={`${styles.dropdownMenu} ${visible ? styles.show : styles.hide}`}>
-                                                        {["کارودانش", "فنی و حرفه ای", "نظری"].map(option => (
+                                                        {["انسانی", "تجربی", "حسابداری", "شبکه و نرم افزار رایانه"].map(option => (
                                                         <div
                                                             key={option}
                                                             className={styles.dropdownItem}
                                                             onClick={e => {
                                                             e.stopPropagation();
-                                                            setEditingData(prev => ({ ...prev, branch: option }));
+                                                            setEditingData(prev => ({ ...prev, feild: option }));
                                                             setVisible(false);
                                                             }}
                                                         >
@@ -239,9 +238,9 @@ export default function FeildList() {
                                         ) : (
                                             /* حالت عادی نمایش */
                                             <>
+                                                <div className={styles.item}><p>{s.book}</p></div>
+                                                <div className={styles.item}><p>{s.bookID}</p></div>
                                                 <div className={styles.item}><p>{s.feild}</p></div>
-                                                <div className={styles.item}><p>{s.feildID}</p></div>
-                                                <div className={styles.item}><p>{s.branch}</p></div>
 
                                                 {/* حذف در حالت عادی */}
                                                 <div className={`${styles.delete} ${styles.display}`} onClick={() => handleDelete(s.id)}>
