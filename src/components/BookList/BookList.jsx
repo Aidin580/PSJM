@@ -90,9 +90,9 @@ export default function BookList() {
                     <div className={styles.feilds_container}>
                         <div className={styles.headers_container}>
                             <div className={styles.back_container} onClick={() => onClose()}>
-                                    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.57935 12.0483L1.02378 20.7829C0.642324 21.1722 0.646215 21.795 1.03157 22.1842L2.56129 23.7139C2.95443 24.1032 3.585 24.1032 3.97425 23.71L14.8614 12.7528C15.056 12.5582 15.1533 12.3052 15.1533 12.0483C15.1533 11.7914 15.056 11.5384 14.8614 11.3438L3.97425 0.386562C3.585 -0.00657463 2.95443 -0.00657463 2.56129 0.382669L1.03157 1.9124C0.646215 2.30164 0.642324 2.92443 1.02378 3.31367L9.57935 12.0483Z" fill="white"/>
-                                    </svg>
+                                <svg viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.57935 12.0483L1.02378 20.7829C0.642324 21.1722 0.646215 21.795 1.03157 22.1842L2.56129 23.7139C2.95443 24.1032 3.585 24.1032 3.97425 23.71L14.8614 12.7528C15.056 12.5582 15.1533 12.3052 15.1533 12.0483C15.1533 11.7914 15.056 11.5384 14.8614 11.3438L3.97425 0.386562C3.585 -0.00657463 2.95443 -0.00657463 2.56129 0.382669L1.03157 1.9124C0.646215 2.30164 0.642324 2.92443 1.02378 3.31367L9.57935 12.0483Z" fill="white"/>
+                                </svg>
                                 <p className={styles.back_txt}>بازگشت</p>
                             </div>
 
@@ -116,6 +116,7 @@ export default function BookList() {
                                 <div className={styles.row}>
                                     <div className={styles.item}>
                                         <input
+                                            className="truncate-input"
                                             value={newBook}
                                             onChange={(e) => setNewBook(e.target.value)}
                                             placeholder="نام درس"

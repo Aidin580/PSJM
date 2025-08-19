@@ -15,6 +15,10 @@
     position: absolute;
     right: 11px;
 }
+.coming_soon {
+    opacity: 0.6;
+    position: relative;
+}
 .top{
     width: 100%;
     display: flex;
@@ -38,21 +42,17 @@
 .items p{
    transition-duration: 650ms;
    cursor: pointer;
-  
 }
 .items img{
     width: 30px;
-    
 }
 .sidebaropen{
     width: 340px;
-    
     align-items: end;
     transition-duration: 220ms;
     padding: 8px;
     gap: 8px;
     box-shadow: rgba(0, 0, 0, 0.452) -5px 0 25px;
-   
 }
 .sidebaropen .top .items{
     background-color: var(--backcolor);
@@ -66,15 +66,13 @@
     margin: 0;
 }
 .open{
-  
     width: 120vw;
     position: absolute;
     z-index: 9;
     height: 150vh;
     top: -200px;
     right: 0;
-
-   backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 .line{
     background-color: white !important;
@@ -90,8 +88,6 @@
     align-items: center;
     justify-content: center;
     padding-right: 1px;
- 
-   
 }
 
 .sidebaropen .bottom{
@@ -161,8 +157,9 @@
   
 }
 .bigitems img{
-    width: 25px;
-    max-height: 1.5vw;
+    width: 30px;
+    height: 30px;
+    max-height: 2.9vw;
 }
 .sidebaropen .top .bigitems{
     background-color: var(--backcolor);

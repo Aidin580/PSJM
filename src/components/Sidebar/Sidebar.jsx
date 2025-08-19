@@ -35,7 +35,7 @@ export default function Sidebar() {
       <div className={`${styles.sidebar} ${open && styles.sidebaropen}`} onClick={inm} >
         <div onClick={(e) => { e.stopPropagation() }} className={styles.top}>
           {user?.role !== 'teacher' && (<NavLink to={'/'} className={styles.items} ><img alt='' src={dashboard} /><div className={styles.line} />{open && <p>داشبورد</p>}</NavLink>)}
-          <NavLink to={'/coming-soon'} className={styles.items} ><img alt='' src={coming_soon} /><div className={styles.line} /> {open && <p>نظارت و بررسی</p>}</NavLink>
+          <NavLink to={'/coming-soon'} className={`${styles.items} ${styles.coming_soon}`} ><img alt='' src={coming_soon} /><div className={styles.line} /> {open && <p>نظارت و بررسی</p>}</NavLink>
           <NavLink to={'/Record'} className={styles.items} ><img alt='' src={set_year} /><div className={styles.line} />{open && <p>کارنامه و آمار تحصیلی</p>}</NavLink>
 
           {(user?.role !== 'teacher' || user?.role === 'deputy') && (<div className={styles.bigitems} >

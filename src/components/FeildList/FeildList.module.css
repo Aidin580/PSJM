@@ -27,11 +27,9 @@
     column-gap: 0.3vw;
     z-index: 1;
     cursor: pointer;
-}
-.back_img {
-  width: 2vw;
-  height: 2vw;
-  margin: 0;
+    svg {
+        width: 16px;
+    }
 }
 .back_txt {
   color: var(--solidwhite);
@@ -64,8 +62,8 @@
         background: var(--importantcolor);
         color: var(--solidwhite);
         border-radius: 5px;
-        padding: 0.4vw 1.8vw;
-        font-size: 0.8vw;
+        padding: 8px 25px;
+        font-size: 14px;
         font-family: Bold;
         cursor: pointer;
     }
@@ -138,7 +136,7 @@
 
 /* the dropdown */
 .displayBox {
-    width: 19vw;
+    width: 85%;
     height: 6vh;
     background-color: #ffffff;
     border-radius: 10px;
@@ -152,7 +150,7 @@
     font-size: 1.3vw;
 }
 .arrowBox {
-    width: 3.3vw;
+    width: 15%;
     height: 6vh;
     background-color: #ffffff;
     border-radius: 10px;
@@ -287,91 +285,121 @@
   background-color: var(--importantcolor);
   border-radius: 16px;
 }
-.day{
-    height: 60px;
-    width: 100%;
-    background-color: var(--backcolor);
-    border-radius: 9px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
-    cursor: pointer;
-    user-select: none;
-}
 
-.day p{
-    width: 200px;
-    height: 40px;
-    padding: 5px;
-    background-color: var(--importantcolor);
-    color: white;
-    border-radius: 7px;
-    font-size: 20px;
-    margin: 0;
-}
-.class{
-    width: 22%;
-    height: 40px;
-    background-color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-}
-.class p{
-    background-color: transparent;
-    color: black;
-    font-size: 18px;
-    width: fit-content;
-    height: fit-content;
-    margin: 0;
-    padding: 0;
-}
 
-.holiday{
-    background-image: linear-gradient(to left,var(--outback) 20%,var(--backcolor));
-    position: relative;
+@media screen and (max-width: 1440px) {
+    .displayBox {
+        width: 81%;
+    }
+    .arrowBox {
+        width: 19%;
+    }
 }
-.holiday p{
-    position: relative;
+@media screen and (max-width: 1024px) {
+    .back_container {
+        svg {
+            width: 15px;
+        }
+        .back_txt {
+            font-size: 1.4vw;
+        }
+    }
+    .right {
+        svg{
+            width: 30px;
+            margin: 0;
+        }
+        h1{
+            padding-right: 10px;
+        }
+    }
+    .item, .itemgg{
+        font-size: 15px;
+        height: 40px;
+    }
+    .delete, .submit, .cancel, .edit{
+        font-size: 15px;
+        p{
+            margin: 0;
+        }
+        svg {
+            width: 15px;
+        }
+    }
+    .displayBox {
+        width: 80%;
+        height: 40px;
+        border-radius: 8px;
+    }
+    .arrowBox {
+        width: 20%;
+        height: 40px;
+        border-radius: 8px;
+    }
+    .item {
+        font-size: 15px;
+        input {
+            font-size: 15px;
+        }
+    }
+    .item:nth-child(3) {
+        svg {
+            width: 25px;
+        }
+    }
 }
-.holi{
-    background-color:var(--outbutton) !important; 
-    position: absolute !important;
-    top: 0;
-    right: 0;
-    width: 100% !important;
-    opacity: 85%;
-}
-.holiday .class p{
-    opacity: 100%;
-    color: rgba(0, 0, 0, 0.219);
-}
-.holiday .class p{
-    opacity: 100%;
-    color: rgba(0, 0, 0, 0.219);
-}
-
-.double {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    background-color: transparent;
-    align-items: center;
-  }
-  .double p{
-    text-align: center;
-  }
-.half {
-  display: flex;
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-  height: 40px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 768px) {
+    .back_container {
+        width: 20%;
+        svg {
+            width: 13px;
+        }
+        .back_txt {
+            font-size: 1.8vw;
+        }
+    }
+    .right {
+        svg{
+            width: 25px;
+            margin: 0;
+        }
+        h1{
+            padding-right: 5px;
+        }
+    }
+    .item, .itemgg{
+        font-size: 11px;
+        height: 30px;
+    }
+    .delete, .submit, .cancel, .edit{
+        font-size: 11px;
+        height: 30px;
+        p{
+            margin: 0;
+        }
+        svg {
+            width: 11px;
+        }
+    }
+    .displayBox {
+        width: 77%;
+        height: 30px;
+        border-radius: 8px;
+    }
+    .arrowBox {
+        width: 23%;
+        height: 30px;
+        border-radius: 8px;
+    }
+    .item {
+        font-size: 10px;
+        input {
+            font-size: 10px;
+        }
+    }
+    .item:nth-child(3) {
+        svg {
+            width: 20px;
+        }
+    }
 }

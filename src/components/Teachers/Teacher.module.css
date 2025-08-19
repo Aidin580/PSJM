@@ -1,11 +1,11 @@
 .container{
     width: 100%;
-     height: 85vh;
-     background-color: white;
-     margin-top: 25px;
-     border-radius: 16px;
-     padding: 20px;
-     font-family: bold;
+    height: 85vh;
+    background-color: white;
+    margin-top: 25px;
+    border-radius: 16px;
+    padding: 20px;
+    font-family: bold;
 }
 .header{
     width: 100%;
@@ -28,12 +28,17 @@
         margin: 0;
         margin-right: 15px;
     }
-    p{
-        margin: 0;
-        margin-right: 15px;
+    .p_dad {
+        display: flex;
+        flex-direction: row;
+        p{
+            margin: 0;
+            margin-right: 15px;
+        }
     }
     h1{
         margin-right: 15px;
+        font-family: Bold;
     }
 }
 .left{
@@ -93,7 +98,7 @@
     display: flex;
     align-items: center;   
     justify-content: center;
-            font-size: 20px;
+    font-size: 20px;
     p{
         margin: 0;
     }
@@ -113,17 +118,29 @@
     width: 19%;
     font-size: 20px;
 }
+.truncate {
+  display: inline-block;
+  max-width: 255px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .item:nth-child(5){
     width: 13%;
+    column-gap: 0.3vw;
 }
-.checkbox{
+.absent, .present {
     width: 20px;
     height: 20px;
     border-radius: 20%;
-    background-color: var(--outbutton);
-    margin-left: 5px;
 }
-.delete{
+.absent{
+    background-color: var(--outbutton);
+}
+.present{
+    background-color: var(--inbutton);
+}
+.delete, .edit{
     color: white;
     width: 10%;
     padding: 5px;
@@ -133,24 +150,9 @@
     align-items: center;   
     justify-content: center;
     font-size: 20px;
+    column-gap: 0.2vw;
     p{
         margin: 0;
-        margin-right: 5px; 
-    }
-}
-.edit{
-    color: white;
-    width: 10%;
-    padding: 5px;
-    background-color: var(--importantcolor);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;   
-    justify-content: center;
-            font-size: 20px;
-    p{
-        margin: 0;
-        margin-right: 5px; 
     }
 }
 
@@ -166,43 +168,46 @@
              margin-right: 5px;
         }
     }
-
+    .left{
+         justify-content: space-between;
+    }
     .filter{
         width: 22%;
     }
     .search{
         width: 250px;
-    }
-        .item{
-        font-size: 14px;
-    }
-    .delete{
-        font-size: 16px;
         img{
-            width: 16px;
+            width: 24px;
+            height: 24px;
         }
     }
-    .edit{
+    .item{
+        font-size: 14px;
+        p {
+            font-size: 14px;
+        }
+    }
+    .delete, .edit{
         font-size: 16px;
         img{
             width: 16px;
         }
     }
 }
-
 @media screen and (max-width: 1024px) {
     .header{
         h1{
-            font-size: 20px;
-            justify-content: space-between;
+            font-size: 18px;
+            text-wrap: nowrap;
         }
         p{
-            margin-right: 8px;
-            font-size: 12px;
+            margin-right: 4px;
+            font-size: 9px;
         }
-    }
-    .filter{
-        width: 20%;
+        svg{
+            width: 24px;
+            height: 24px;
+        }
     }
     .search{
         width: 200px;
@@ -211,192 +216,111 @@
         font-size: 12px;
     }
     .item{
-        font-size: 14px;
-    }
-    .delete{
-        font-size: 16px;
-        img{
-            width: 16px;
+        height: 37px;
+        font-size: 12px;
+        padding: 10px;
+        p {
+            font-size: 12px;
+            padding: 8px;
         }
     }
-    .edit{
-        font-size: 16px;
+    .delete, .edit{
+        font-size: 12px;
+        height: 37px;
         img{
-            width: 16px;
+            width: 14px;
+            height: 14px;
         }
+    }
+    .row{
+        padding: 7px;
     }
 }
-@media screen and (max-width: 450px) {
-    .container{
-        padding: 10px;
-        margin-top: 15px;
-        border-radius: 8px;
-    }
-    .header{
-        background-image: none;
-        background-color: var(--importantcolor);
-        border-radius: 4px;
-        svg{
-            display: none;
-        }
-        p{
-            display: none;
-        }
+@media screen and (max-width: 768px) {
+    .header {
         h1{
-            font-family: bold;
-            font-size: 18px;
+            font-size: 13px;
+            text-wrap: nowrap;
+        }
+        svg{
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .right {
+        .p_dad {
+            display: flex;
+            flex-direction: column;
+            p{
+                margin: 0;
+                margin-right: 10px;
+                font-size: 8px;
+            }
         }
     }
     .left{
-        justify-content: center;
-        width: 50px;
+        width: 53%;
+        .alighner {
+            width: 46%;
+            flex-direction: column;
+            .filter {
+                width: 100%;
+            }
+        }
     }
-        .row{
-        height: 40px;
-        border-radius: 4px;
-        padding: 5px;
-        margin-top: 5px;
+    .filter{
+        width: 90px;
+        color: black;
+        display: flex;
+        p{
+            margin: 0;
+            margin-right: 5px;
+        }
+    }
+    .search{
+        width: 390px;
+    }
+    .search input{
+        font-size: 10px;
     }
     .item{
-        height: 100%;
-        border-radius: 4px;
-        padding: 5px;
-    }
-    .item:nth-child(1){
-        width: 43%;
-    }
-    .item:nth-child(3){
-        width: 25%;
-        justify-content: center;
-    }
-      .item:nth-child(4){
-        width: 18%;
-    }
-    .delete{
-        border-radius: 4px;
-        p{
-            display: none;
+        height: 32px;
+        p {
+            padding: 0px;
+            font-size: 11px;
         }
-    }
-    .display{
-        display: none;
-    }
-    .search{
-        display: none;
-    }
-}
-@media screen and (max-width: 400px) {
-    .item:nth-child(1){
-        width: 40%;
-    }
-    .item:nth-child(3){
-        width: 25%;
-    }
-      .item:nth-child(4){
-        width: 20%;
-    }
-}
-@media screen and (max-width: 320px) {
-    .container {
-        padding: 5px;
-        margin-top: 8px;
-        border-radius: 4px;
-    }
-    .header h1 {
-        font-size: 14px;
-    }
-    .row {
-        height: 30px;
-        padding: 2px;
-        margin-top: 2px;
-        border-radius: 2px;
-    }
-    .item {
-        font-size: 10px;
-        padding: 2px;
-        border-radius: 2px;
-    }
-    .item:nth-child(1) {
-        width: 35%;
     }
     .item:nth-child(3) {
-        width: 35%;
+        width: 18%;
     }
-    .item:nth-child(4) {
-        width: 15%;
+    .item:nth-child(5){
+        width: 14%;
+        font-size: 10px;
+        text-wrap: nowrap;
+        column-gap: 0.3vw;
     }
-     .delete{
-        border-radius: 4px;
+    .absent{
+        width: 15px;
+        height: 15px;
+        border-radius: 0.2rem;
+    }
+    .present{
+        width: 15px;
+        height: 15px;
+        border-radius: 0.2rem;
+    }
+    .delete{
+        height: 33px;
         p{
-            display: none;
+            margin: 0;
+            margin-right: 5px;
         }
     }
-    .display{
-        display: none;
+    .edit{
+        height: 33px;
+        p{
+            margin: 0;
+            margin-right: 5px; 
+        }
     }
-    .search{
-        display: none;
-    }
-    .edit {
-        font-size: 12px;
-        padding: 2px;
-        border-radius: 2px;
-    }
-    .checkbox{
-        height: 15px;
-        margin-left: 1px;
-    }
-}
-
-
-.searchBox {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 0 8px;
-    background-color: white;
-}
-
-.searchBox input {
-    border: none;
-    outline: none;
-    padding: 10px 8px;
-    width: 250px;
-}
-
-.searchBox img {
-    width: 16px;
-    height: 16px;
-}
-
-/* استایل برای چک‌باکس */
-.checkbox {
-    width: 18px;
-    height: 18px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.checkbox.checked {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-/* کلاس‌های کمکی برای نمایش پیام‌ها */
-.errorText, .emptyText {
-    padding: 20px;
-    text-align: center;
-    color: #555;
-    font-size: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    margin: 10px;
-}
-
-.errorText {
-    color: #d9534f;
-    background-color: #f2dede;
 }

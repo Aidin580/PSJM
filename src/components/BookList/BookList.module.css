@@ -27,11 +27,9 @@
     column-gap: 0.3vw;
     z-index: 1;
     cursor: pointer;
-}
-.back_img {
-  width: 2vw;
-  height: 2vw;
-  margin: 0;
+    svg {
+        width: 16px;
+    }
 }
 .back_txt {
   color: var(--solidwhite);
@@ -42,12 +40,12 @@
 
 
 .right {
-  font-family: extra-bold;
+    font-family: extra-bold;
     display: flex;
     align-items: center;
+    padding: 0 10px;
     svg{
         margin: 0;
-        margin-right: 15px;
     }
     p{
         margin: 0;
@@ -64,8 +62,8 @@
         background: var(--importantcolor);
         color: var(--solidwhite);
         border-radius: 5px;
-        padding: 0.4vw 1.8vw;
-        font-size: 0.8vw;
+        padding: 8px 25px;
+        font-size: 14px;
         font-family: Bold;
         cursor: pointer;
     }
@@ -94,45 +92,22 @@
     display: flex;
     justify-content: space-between;
 }
-.item{
+.item, .itemgg{
     height: fit-content;
     padding: 12px;
-    height: 6vh;
+    height: 60px;
     background-color: white;
     border-radius: 8px;
     display: flex;
     align-items: center;   
     justify-content: center;
     font-size: 20px;
-    p{
-        margin: 0;
-    }
-    input {
-        font-size: 20px;
-    }
 }
 .itemgg {
-    height: fit-content;
-    padding: 12px;
-    height: 6vh;
     background-color: unset;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;   
-    justify-content: center;
-    font-size: 20px;
-    p{
-        margin: 0;
-    }
-    input {
-        font-size: 20px;
-    }
 }
 .item:nth-child(1), .itemgg:nth-child(1){
     width: 25.5%;
-    input {
-        text-align: center;
-    }
 }
 .item:nth-child(2), .itemgg:nth-child(2){
     width: 25.5%;
@@ -236,7 +211,7 @@
     background-color: var(--outbutton);
     margin-left: 5px;
 }
-.edit{
+.delete, .submit, .cancel, .edit{
   color: white;
   width: 10%;
   padding: 5px;
@@ -250,24 +225,6 @@
   column-gap: 0.3vw;
   p{
       margin: 0;
-      margin-right: 5px; 
-  }
-}
-.delete, .submit, .cancel{
-  color: white;
-  width: 10%;
-  padding: 5px;
-  background-color: var(--importantcolor);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;   
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  column-gap: 0.3vw;
-  p{
-      margin: 0;
-      margin-right: 5px; 
   }
 }
 .header{
@@ -302,91 +259,70 @@
   background-color: var(--importantcolor);
   border-radius: 16px;
 }
-.day{
-    height: 60px;
-    width: 100%;
-    background-color: var(--backcolor);
-    border-radius: 9px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
-    cursor: pointer;
-    user-select: none;
-}
 
-.day p{
-    width: 200px;
-    height: 40px;
-    padding: 5px;
-    background-color: var(--importantcolor);
-    color: white;
-    border-radius: 7px;
-    font-size: 20px;
-    margin: 0;
+@media screen and (max-width: 1024px) {
+    .back_container {
+        svg {
+            width: 15px;
+        }
+        .back_txt {
+            font-size: 1.4vw;
+        }
+    }
+    .right {
+        svg{
+            width: 30px;
+            margin: 0;
+        }
+        h1{
+            padding-right: 10px;
+        }
+    }
+    .item, .itemgg{
+        font-size: 15px;
+        height: 40px;
+    }
+    .delete, .submit, .cancel, .edit{
+        font-size: 15px;
+        p{
+            margin: 0;
+        }
+        svg {
+            width: 15px;
+        }
+    }
 }
-.class{
-    width: 22%;
-    height: 40px;
-    background-color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-}
-.class p{
-    background-color: transparent;
-    color: black;
-    font-size: 18px;
-    width: fit-content;
-    height: fit-content;
-    margin: 0;
-    padding: 0;
-}
-
-.holiday{
-    background-image: linear-gradient(to left,var(--outback) 20%,var(--backcolor));
-    position: relative;
-}
-.holiday p{
-    position: relative;
-}
-.holi{
-    background-color:var(--outbutton) !important; 
-    position: absolute !important;
-    top: 0;
-    right: 0;
-    width: 100% !important;
-    opacity: 85%;
-}
-.holiday .class p{
-    opacity: 100%;
-    color: rgba(0, 0, 0, 0.219);
-}
-.holiday .class p{
-    opacity: 100%;
-    color: rgba(0, 0, 0, 0.219);
-}
-
-.double {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    background-color: transparent;
-    align-items: center;
-  }
-  .double p{
-    text-align: center;
-  }
-.half {
-  display: flex;
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-  height: 40px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 768px) {
+    .back_container {
+        width: 20%;
+        svg {
+            width: 13px;
+        }
+        .back_txt {
+            font-size: 1.8vw;
+        }
+    }
+    .right {
+        svg{
+            width: 25px;
+            margin: 0;
+        }
+        h1{
+            padding-right: 5px;
+        }
+    }
+    .item, .itemgg{
+        font-size: 11px;
+        height: 33px;
+    }
+    .delete, .submit, .cancel, .edit{
+        font-size: 11px;
+        height: 33px;
+        p{
+            margin: 0;
+        }
+        svg {
+            width: 11px;
+        }
+    }
 }

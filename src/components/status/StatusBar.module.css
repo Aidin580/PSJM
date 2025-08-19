@@ -1,6 +1,5 @@
 .status_element_keeper {
     min-width: 46vw;
-    max-width: 60vw;
     height: 100%;
     background-color: var(--importantcolor);
     border-radius: 5px;
@@ -30,7 +29,7 @@
     p {
         font-family: Bold;
         color: var(--solidwhite);
-        font-size: 0.6vw;
+        font-size: 10px;
     }
 }
 
@@ -45,8 +44,8 @@
     padding-right: 0.5vw;
     font-family: Bold;
     color: var(--solidwhite);
-    font-size: 0.7vw;
-    min-width: 25px;
+    font-size: 12px;
+    min-width: 20px;
     max-width: 150px;
     flex-shrink: 1;
     flex-grow: 1;
@@ -54,9 +53,31 @@
     word-break: break-word;
 }
 
-
 .vertical_line {
     width: 1px;
     height: 22px;
     background-color: var(--solidwhite);
+}
+
+@media screen and (max-width: 1024px) {
+    .status_element_keeper {
+        padding: 0 10px;
+    }
+    .logo_warn {
+        img {
+            width: 35px;
+        }
+        p {
+            font-size: 7px;
+        }
+    }
+    .on_off_status,
+    .today,
+    .date,
+    .time {
+        height: 3.9vh;
+        font-size: 8px;
+        min-width: 20px;
+        max-width: 150px;
+    }
 }

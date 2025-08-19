@@ -1,15 +1,12 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState } from 'react';
 import style from "./LoginTile.module.css";
-import logo from '../../assets/icons/sjm-logo-green.svg';
 import x_panel from '../../assets/icons/x-panel-logo.svg';
-import user from '../../assets/icons/user.svg';
 import axios from 'axios';
-import api,{ endpoints } from '../../config/api';
+import { endpoints } from '../../config/api';
 import { useAuth } from '../../Context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import FetchSchools from "../../Context/FetchSchools.jsx"
 import Loading from "../LoadingSpinner/LoadingSpinner.jsx"
-import { setAuthToken } from "../../config/api.js"; // یا مسیر درست به نسبت پروژه‌ت
 
 
 export default function LoginTile() {
@@ -67,8 +64,6 @@ export default function LoginTile() {
   
   const { login } = useAuth();
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const { setUser } = useAuth();
 
   const handleLogin = async () => {
     
@@ -154,7 +149,6 @@ export default function LoginTile() {
   // }, [user]);
   
   return (
-    
     <div className={style.container}>
       <FetchSchools/>
       <div className={style.pic}>

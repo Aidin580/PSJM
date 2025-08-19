@@ -1,7 +1,7 @@
 .Login{
   width: 100%;
   height: 87vh;
-  display: flex;
+  display: flex; 
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -21,11 +21,32 @@
   justify-content: right;
   column-gap: 0.5vw;
   img {
-    width: 100px;
+    width: 6vw;
   }
 }
 .vertical-line {
   width: 1px;
   height: 30px;
   background-color: var(--importantcolor);
+}
+
+@media screen and (max-width: 1024px) {
+  .login_container{
+      width: 60%;
+  }
+  .developers {
+    img {
+      width: 8vw;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .login_container{
+    width: 70%;
+  }
+  .developers {
+    img {
+      width: 10vw;
+    }
+  }
 }

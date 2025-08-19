@@ -193,10 +193,10 @@ export default function FeildList() {
                                                 <div className={styles.item}>
                                                     <div className={styles.arrowBox} onClick={() => setVisible(!visible)}>
                                                         <svg
-                                                        className={`${styles.arrow} ${visible ? styles.rotate : ''}`}
-                                                        viewBox="0 0 26 16"
-                                                        fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg"
+                                                            className={`${styles.arrow} ${visible ? styles.rotate : ''}`}
+                                                            viewBox="0 0 26 16"
+                                                            fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg"
                                                         >
                                                         <path d="M13.1299 9.96316L4.53266 1.36591C3.60116 0.434414 2.08916 0.434414 1.15766 1.36591C0.226158 2.29741 0.226158 3.80941 1.15766 4.74091L11.5392 15.1224C12.4189 16.0022 13.8432 16.0022 14.7207 15.1224L25.1022 4.74091C26.0337 3.80941 26.0337 2.29741 25.1022 1.36591C24.1707 0.434414 22.6587 0.434414 21.7272 1.36591L13.1299 9.96316Z" fill="#6B69B2" />
                                                         </svg>

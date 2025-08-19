@@ -113,7 +113,8 @@ export default function Header() {
             navigate('/login');
         }
     }, [user, navigate]);
-    const schoolId = '1';
+
+    
     return (
         <>
             <div onClick={handleheaderdown} className={`${styles.Header} ignore-close`} ref={dropdownRef}>
